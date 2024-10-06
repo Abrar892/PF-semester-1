@@ -3,7 +3,7 @@ using namespace std;
 void duration(int h, int m);
 main()
 {
-int h,b;
+int h,m;
 cout<<"Enter the number of hours:";
 cin>> h;
 cout<<"Enter the number of minutes:";
