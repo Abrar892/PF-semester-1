@@ -12,8 +12,8 @@ void login();
 void signup();
 void staff();
 using namespace std;
-int n1,n2,n4,n5,n11,n8,r,save,r1,r2,r3,p1,p2,p3;
-string n3,n6,n0,role,n13,t1,t2,t3,status1,status2,status3;
+int n1,n2,n4,n5,r1,r2,r3,p1,p2,p3;
+string n20,n3,n6,n0,n8,role,r,n13,t1,t2,t3,status1,status2,status3;
 main()
 {
     while (true)
@@ -32,30 +32,33 @@ cout<<""<<endl;
 cout<<"   ------------------------------------------"<<endl;
 cout<<"   Enter your choice : ";
 cin>> r;
-if(r<1 || r>3)
-{cout<<"Invalid input! Please enter a number between 1-3";
-}
-if(r==1)
+if(r=="1")
 {
 login();
 }
-if(r==2)
+if(r=="2")
 {
 signup();
 }
-if(r==3)
+if(r=="3")
 {
 cout<<"Press any key to exit.."<<endl;
 getch();
+break;
+}else
+{
+    cout<<"Invalid input! Please enter a number between 1-3";
+    getch();
 }
     }
+    return 0;
 }
 void guestmenu()
 {
     while (true)
     {
     system("cls");
-int choice;
+string choice;
 cout<<""<<endl;
 cout<<"   ========================================="<<endl;
 cout<<"                   Guest Menu             "<<endl;
@@ -68,20 +71,22 @@ cout<<""<<endl;
 cout<<"   ========================================="<<endl;
 cout<<"   Enter your choice : ";
 cin>> choice;
-if(choice<1 || choice>3)
-{cout<<"Invalid input! Please enter a number between 1-5";
-}
-if (choice==1)
+if (choice=="1")
 {
 available();
 }
-if(choice==2)
+if(choice=="2")
 {
 book();
 }
-if(choice==3)
+if(choice=="3")
 {
 main();
+}
+else 
+{
+    cout<<"Invalid input! Please enter a number between 1-5";
+    getch();
 }
 }
 }
@@ -97,16 +102,16 @@ cout<<"   Room No.       Room Type     Price (per night)"<<endl;
 cout<<""<<endl;
 cout<<"   ------------------------------------------"<<endl;
 cout<<""<<endl;
-cout<<"  "<<r1<<"       "<<t1<<"          $"<<p1<<endl;
-cout<<"  "<<r2<<"       "<<t2<<"          $"<<p2<<endl;
-cout<<"  "<<r3<<"       "<<t3<<"          $"<<p3<<endl;
+cout<<"  "<<r1<<"            "<<t1<<"          $"<<p1<<endl;
+cout<<"  "<<r2<<"            "<<t2<<"          $"<<p2<<endl;
+cout<<"  "<<r3<<"            "<<t3<<"          $"<<p3<<endl;
 cout<<""<<endl;
 cout<<"   ------------------------------------------"<<endl;
 cout<<""<<endl;
 cout<<"Please enter 1 to return to guest menu...."<<endl;
 cout<<"  Enter your choice: ";
 cin>> n8;
-if(n8==1)
+if(n8=="1")
 {guestmenu();}
 }
 void book()
@@ -123,6 +128,8 @@ cin>> n1;
 if(n1<101 || n1>103)
 {
 cout<<"   Please enter the valid room number"<<endl;
+getch();
+continue;
 }
 cout<<"   Enter Name: ";
 cin>>n3;
@@ -136,7 +143,7 @@ cout<<"   Booking Successful!"<<endl;
 cout<<"   Room No: "<<n1<<" has been booked under the name "<<n3<<" for "<<n2<<" nights"<<endl;
 cout<<"  Please enter 1 to return to guest menu.... ";
 cin>> n8;
-if(n8==1)
+if(n8=="1")
 {guestmenu();
 }
     }
@@ -158,10 +165,6 @@ cout<<"   -----------------------------------------"<<endl;
 int n7;
 cout<<"Enter Your choice: ";
 cin>>n7;
-if(n7<1 || n7>3)
-{
-cout<<"   Please enter the valid number "<<endl;
-}
 if(n7==1)
 {
 all();
@@ -173,6 +176,11 @@ if(n7==2)
 if(n7==3)
 {
     main();
+}
+else
+{
+cout<<"   Please enter the valid number (1-3) "<<endl;
+getch();
 }
     }
 }
@@ -210,10 +218,13 @@ cout<<"  "<<n1<<"         "<<n3<<"          "<<n2<<"               "<<"$"<<n2*p3
 cout<<""<<endl;
 cout<<"   -------------------------------------------------------------------"<<endl;
 }
+else {
+    cout<<" No current bookings.... "<<endl;
+}
 int n9;
 cout <<" Press 1 to return to the Manager Menu..." << endl;
 cin>> n9;
-if(n8==1)
+if(n9==1)
 {managermenu();
 }
 }
@@ -237,13 +248,17 @@ cin>> n10;
 {
 clean();
 }
-if(n10==2)
+else if(n10==2)
 {
 mark();
 }
-if(n10==3)
+else if(n10==3)
 {
 main();
+}
+else{
+    cout<<"Invalid input! Please enter a number between 1-3"<<endl;
+    getch();
 }
 }
 }
@@ -261,11 +276,7 @@ cout<<"  "<<r2<<"        "<<status2<<endl;
 cout<<"  "<<r3<<"        "<<status3<<endl;
 cout<<"   ----------------------"<<endl;
 cout<<"   Enter 1 to return to the Staff Menu..."<<endl;
-cin >>n11;
-if(n11==1)
-{
-staff();
-}
+getch();
 }
 void mark()
 { 
@@ -294,10 +305,12 @@ cout<<"    Enter Room Status: ";
 cin>> status3;
 cout<<"    Room "<<n12<<" has been marked as "<<status3<<endl;
 }
-if(n11==1)
+else
 {
-staff();
+    cout<<"Invalid room number."<<endl;
 }
+   cout<<" Press any key to return to the staff Menu...... "<<endl;
+   getch();
 }
 void login()
 {
@@ -312,19 +325,19 @@ cout<<"Enter your name: ";
 cin>> n6;
 cout<<"Enter your password: ";
 cin>> n0;
-if (n6==n3 && n0==n13 && role=="Guest")
+if (n6==n20 && n0==n13 && role=="Guest")
 {
 guestmenu();
 }
-if (n6==n3 && n0==n13 && role=="Manager")
+if (n6==n20 && n0==n13 && role=="Manager")
 {
 managermenu();
 }
-if (n6==n3 && n0==n13 && role=="Staff")
+if (n6==n20 && n0==n13 && role=="Staff")
 {
 staff();
 }
-if (n6!=n3 || n0!=n13 )
+if (n6!=n20 || n0!=n13 )
 {
 cout<<"Please enter correct name and password...";
 }
@@ -340,17 +353,22 @@ cout<<"            Welcome to Hotel Mate   "<<endl;
 cout<<"   ========================================="<<endl;
 cout<<"                                  "<<endl;
 cout<<"Enter your name: ";
-cin>> n3;
+cin>> n20;
 cout<<"Enter your password: ";
 cin>> n13;
-cout<<"Enter your role: ";
+cout<<"Enter your role (Guest or Manager or Staff): ";
 cin>> role;
+if(role!="Guest" && role!="Manager" && role!="Staff")
+{
+    cout<<"Please enter valid role.... ";
+}
+else
+    {
 cout<<"To save information, enter 1.....  ";
-cin>> save;
-if(save==1)
-{main();
-}
-}
+getch();
+return;
+    }
+    }
 }
 void price()
 {

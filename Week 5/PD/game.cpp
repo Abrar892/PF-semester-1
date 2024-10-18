@@ -54,11 +54,11 @@ if (GetAsyncKeyState(VK_RIGHT))
     moveplayerright();
 }
 moveEnemy();
-Sleep(200);
+Sleep(70);
 moveEnemy2();
-Sleep(200);
+Sleep(80);
 moveEnemy3();
-Sleep(200);
+Sleep(90);
 }
 return 0;
 }
@@ -123,7 +123,7 @@ void moveplayerup()
    if(pY>1)
    {
    eraseplayer();
-   pY=pY-1;
+   pY=pY-3;
    printplayer();
    }
 }
@@ -132,7 +132,7 @@ void moveplayerdown()
    if(pY<24)
    {
    eraseplayer();
-   pY=pY+1;
+   pY=pY+3;
    printplayer();
    }
 }
